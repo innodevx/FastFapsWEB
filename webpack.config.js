@@ -17,14 +17,16 @@ module.exports = {
     open: true, 
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new Dotenv({
+      systemvars: true,
+      silent: true
     }),
     new webpack.DefinePlugin({
-        'process.env.API_URL': JSON.stringify(process.env.API_URL),
-        'process.env.PROMPT_DEFAULT': JSON.stringify(process.env.PROMPT_DEFAULT),
-      }),
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    })
   ],
+  
   module: {
     rules: [
       {
