@@ -19,7 +19,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html',
     }),
-    new Dotenv()
+    new Dotenv,
+    new webpack.DefinePlugin({
+        'process.env.API_URL': JSON.stringify(process.env.API_URL),
+        'process.env.PROMPT_DEFAULT': JSON.stringify(process.env.PROMPT_DEFAULT),
+      }),
   ],
   module: {
     rules: [
